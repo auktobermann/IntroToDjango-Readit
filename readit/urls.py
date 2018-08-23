@@ -18,8 +18,11 @@ from django.conf.urls import include, url
 from django.contrib import admin
 from django.urls import path
 
+from books.views import list_books
+
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('', list_books, name='books'),
 ]
 
 if settings.DEBUG:
