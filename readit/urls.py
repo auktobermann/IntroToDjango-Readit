@@ -16,14 +16,16 @@ Including another URLconf
 from django.conf import settings
 from django.conf.urls import include, url
 from django.contrib import admin
-from django.urls import path
+from django.urls import path, re_path
 
-from books.views import AuthorList, list_books
+from books.views import AuthorDetail, AuthorList, BookDetail, list_books
 
 urlpatterns = [
-    path('admin/', admin.site.urls),
-    path('', list_books, name='books'),
-    path('authors/', AuthorList.as_view(), name='authors'),
+    re_path(r'^admin/', admin.site.urls),
+    re_path(r'^$', list_books, name='books'),
+    re_path(r'^authors/$', AuthorList.as_view(), name='authors'),
+    re_path(r'^books/(?P<pk>[-\w]+)/$', BookDetail.as_view(), name='book-detail'),
+    re_path(r'^authors/(?P<pk>[-\w]+)/$', AuthorDetail.as_view(), name='author-detail'),
 ]
 
 if settings.DEBUG:

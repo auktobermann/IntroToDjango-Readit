@@ -1,6 +1,7 @@
 from django.contrib import admin
 from .models import Author, Book
 
+
 @admin.register(Book)
 class BookAdmin(admin.ModelAdmin):
     fieldsets = [
@@ -20,6 +21,7 @@ class BookAdmin(admin.ModelAdmin):
     list_display_links = ("title", "date_reviewed",)
     list_filter = ("is_favorite",)
     search_fields = ("title", "authors__name",)
+
 
 # Register your models here.
 admin.site.register(Author)
