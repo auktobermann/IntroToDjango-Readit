@@ -16,7 +16,7 @@ Including another URLconf
 from django.conf import settings
 from django.conf.urls import include, url
 from django.contrib import admin
-from django.urls import path, re_path
+from django.urls import re_path
 
 from books.views import AuthorDetail, AuthorList, BookDetail, list_books
 
